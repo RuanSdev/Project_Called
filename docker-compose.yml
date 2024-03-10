@@ -10,7 +10,7 @@ services:
         working_dir: /var/www/
         volumes:
             - ./:/var/www
-            # - ./seeds:/app/seeds     # Mapeando o diretório de seeds
+        #     - ./seeds:/app/seeds     # Mapeando o diretório de seeds
         # command: /bin/bash -c "php artisan migrate --seed && php-fpm"
         depends_on:
             - redis

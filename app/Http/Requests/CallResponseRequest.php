@@ -3,11 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Auth;
 
-class EstablishmentRequest extends FormRequest
+class CallResponseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +23,16 @@ class EstablishmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|unique:establishments',
-            'cnpj' => 'required|unique:establishments'
+            'response' => 'required',
+            'user_uuid' => 'required|uuid',
+            'called_uuid' =>'required|uuid',
         ];
     }
-    public function failedValidation(Validator $validator){
-        throw new HttpResponseException(response()->json([
-            "sucess" => false,
-            "mensage" => "Validator error",
-            "erros" => $validator->errors(),
-        ],422));
+    public function prepareForValidation()
+    {
+        $uuidUser =  Auth::user()->getAuthIdentifier();
+        $this->merge([
+            'user_uuid' => $uuidUser,
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalledController;
+use App\Http\Controllers\CallResponseController;
 use App\Http\Controllers\EstablishmentController;
 use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
@@ -38,7 +39,10 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('establishment',[EstablishmentController::class, 'store'])->Middleware('ability:establishment-store');
     Route::get('establishments',[EstablishmentController::class, 'index'])->Middleware('ability:establishment-index');
     Route::get('establishment/{uuid}',[EstablishmentController::class, 'show'])->Middleware('ability:establishment-show');
+    Route::post('called/response',[CallResponseController::class,'store'])->middleware('ability:callResponse-store');
+    Route::get('called/response/{called_uuid}',[CallResponseController::class,'show'])->middleware('ability:callResponse-show');
     Route::post('logout',[AuthController::class, 'logout']);
+
 });
 
 
