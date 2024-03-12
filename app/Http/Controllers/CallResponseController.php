@@ -24,7 +24,8 @@ class CallResponseController extends Controller
     public function store(CallResponseRequest $request)
     {
        $validate = $request->validated();
-       CallResponse::create($validate);
+       return CallResponse::create($validate);
+
     }
 
     /**
