@@ -24,15 +24,15 @@ class CallResponseRequest extends FormRequest
     {
         return [
             'response' => 'required',
-            'user_uuid' => 'required|uuid',
-            'called_uuid' =>'required|uuid',
+            'user_uuid' => 'required|exists:users,uuid',
+            'called_uuid' =>'required|exists:calleds,uuid',
         ];
     }
     public function prepareForValidation()
     {
-        $uuidUser =  Auth::user()->getAuthIdentifier();
+        $uuidUserAuth =  Auth::user()->getAuthIdentifier();
         $this->merge([
-            'user_uuid' => $uuidUser,
+            'user_uuid' => $uuidUserAuth,
         ]);
     }
 }
