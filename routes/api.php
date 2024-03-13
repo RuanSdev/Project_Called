@@ -41,6 +41,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('establishment/{uuid}',[EstablishmentController::class, 'show'])->Middleware('ability:establishment-show');
     Route::post('called/response',[CallResponseController::class,'store'])->middleware('ability:callResponse-store');
     Route::get('called/response/{called_uuid}',[CallResponseController::class,'show'])->middleware('ability:callResponse-show');
+    Route::patch('called/assigned/{uuid}',[CalledController::class, 'update'])->middleware('ability:called-update');
     Route::post('logout',[AuthController::class, 'logout']);
 
 });
