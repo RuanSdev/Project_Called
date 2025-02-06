@@ -38,6 +38,7 @@ class UserController extends Controller
         $validate = $request->validated();
         $validate['password'] = bcrypt($validate['password']);
         $validate['confirmed'] = bcrypt($validate['confirmed']);
+        unset($validate['confirmed']);
         $user = $this->user->create($validate);
         return response()->json([
             'status' => 'active',
