@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password',
         'type',
         'cpf',
-        'confirmed',
+        
     ];
 
     /**
@@ -38,8 +38,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'confirmed',
-
     ];
 
     /**

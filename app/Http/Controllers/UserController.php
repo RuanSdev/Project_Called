@@ -7,6 +7,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class UserController extends Controller
 {
     protected User $user;
