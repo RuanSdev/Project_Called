@@ -7,6 +7,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class UserController extends Controller
 {
     protected User $user;
@@ -38,6 +39,7 @@ class UserController extends Controller
         $validate = $request->validated();
         $validate['password'] = bcrypt($validate['password']);
         $validate['confirmed'] = bcrypt($validate['confirmed']);
+        unset($validate['confirmed']);
         $user = $this->user->create($validate);
         return response()->json([
             'status' => 'active',
