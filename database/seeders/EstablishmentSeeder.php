@@ -14,7 +14,7 @@ class EstablishmentSeeder extends Seeder
     {
         \App\Models\Establishment::factory()->create([
             'name' => 'Cresauto',
-            'cnpj' => '155569982766',
+            'cnpj' => '155569980766',
         ]);
     }
 }
