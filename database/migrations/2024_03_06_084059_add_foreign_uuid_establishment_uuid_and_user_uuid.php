@@ -13,16 +13,19 @@ return new class extends Migration
     {
         Schema::table('calleds', function (Blueprint $table) {
             $table->foreign('establishment_uuid')
+                ->constrained()
                 ->references('uuid')
                 ->on('establishments')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('user_uuid')
+                ->constrained()
                 ->references('uuid')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreign('assigned_user_uuid')->null()
+                ->constrained()
                 ->references('uuid')
                 ->on('users')
                 ->onUpdate('cascade')
