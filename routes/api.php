@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return ["msg" => "API Sucess"];
 });
-Route::prefix('v1')->group(function(){
+Route::prefix('api/v1')->group(function(){
 
 
 Route::post('login',[AuthController::class, 'login']);
