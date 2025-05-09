@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->uuid()->primary();
-            //$table->foreignUuid('establishment_uuid')->references('uuid')->on('establishment');
             $table->string('name');
             $table->string('cpf')->unique();
             $table->enum('type',['Admin','User']);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('confirmed');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

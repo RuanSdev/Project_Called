@@ -15,13 +15,17 @@ return new class extends Migration
             $table->uuid()->primary();
             $table->text('response');
             $table->foreignUuid('user_uuid')
+            ->constrained()
             ->references('uuid')
             ->on('users')
-            ->onUpdate('cascade');
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->foreignUuid('called_uuid')
+            ->constrained()
             ->references('uuid')
             ->on('calleds')
-            ->onUpdate('cascade');
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
