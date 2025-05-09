@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'cpf' => '000.000.000-00',
             'password' => bcrypt('password'),
-            'confirmed' => bcrypt('password'),
             'type' => 'Admin'
         ]);
     }
